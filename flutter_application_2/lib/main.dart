@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/Views/customTextField.dart';
 import 'package:flutter_application_2/Views/customtext.dart';
 
 void main() {
@@ -23,13 +24,25 @@ class Home extends StatelessWidget {
           Icon(Icons.refresh),
         ],
       ),
-      body: Column(children: [
+      body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CustomText(
+              label: "Login Screen",
+              fontSize: 30,
+              labelColor: Colors.deepOrange,
+            ),
+          ],
+        ),
         CustomText(
           label: "username",
         ),
+        CustomTextField(),
         CustomText(
           label: "password",
         ),
+        CustomTextField(),
       ]),
     );
   }

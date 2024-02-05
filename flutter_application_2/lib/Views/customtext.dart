@@ -2,14 +2,20 @@ import 'package:flutter/material.dart';
 
 class CustomText extends StatelessWidget {
   final String label;
-  const CustomText({super.key, required this.label});
+  final double fontSize;
+  final Color labelColor;
+  const CustomText(
+      {super.key,
+      required this.label,
+      this.fontSize = 18,
+      this.labelColor = Colors.blueAccent});
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      "username",
+      label,
       style: TextStyle(
-          color: Colors.deepPurple, fontSize: 16, fontWeight: FontWeight.w600),
+          color: labelColor, fontSize: fontSize, fontWeight: FontWeight.w600),
     );
   }
 }
