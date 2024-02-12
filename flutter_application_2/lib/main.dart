@@ -43,6 +43,18 @@ class Home extends StatelessWidget {
           label: "password",
         ),
         CustomTextField(),
+        // Button
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: ElevatedButton(
+            onPressed: () {
+              // Action to be performed when the button is pressed
+              print('Button Pressed!');
+              // You can add any functionality here
+            },
+            child: Text('Login'),
+          ),
+        ),
       ]),
     );
   }
