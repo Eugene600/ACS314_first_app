@@ -9,8 +9,13 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
         onPressed: () {},
+        style: ElevatedButton.styleFrom(
+          fixedSize: Size(200, 50),
+          backgroundColor: Colors.blueAccent,
+        ),
         child: CustomText(
           label: "Login",
+          labelColor: Colors.orangeAccent,
         ));
   }
 }

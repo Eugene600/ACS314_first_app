@@ -7,7 +7,7 @@ class CustomText extends StatelessWidget {
   const CustomText(
       {super.key,
       required this.label,
-      this.fontSize = 18,
+      this.fontSize = 30,
       this.labelColor = Colors.blueAccent});
 
   @override

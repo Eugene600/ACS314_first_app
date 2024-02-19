@@ -11,8 +11,8 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Daystar Application"),
-        backgroundColor: primaryColor,
+        title: Text("Wachira Industries"),
+        backgroundColor: appOrangeColor,
         foregroundColor: appWhiteColor,
         centerTitle: true,
         actions: [
@@ -30,7 +30,7 @@ class Login extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.network(
-                    "https://www.daystar.ac.ke/images/crest-blue.png"),
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG2IwWWEg6vbDwIC4hBcZKkJl5dVo1jc6Tyz9pjIPFworWBeLqCpBUqITJ_ssrAQl75zw&usqp=CAU"),
               ],
             ),
             SizedBox(
@@ -40,11 +40,15 @@ class Login extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomText(
-                  label: "Login Screen",
-                  fontSize: 30,
-                  labelColor: primaryColor,
+                  label: "Welcome to Our Portal",
+                  fontSize: 50,
+                  labelColor: Colors.red,
                 ),
               ],
+            ),
+
+            SizedBox(
+              height: 40,
             ),
             CustomText(
               label: "username",
@@ -52,6 +56,9 @@ class Login extends StatelessWidget {
             CustomTextField(
               hint: "Phone number or email",
               icon: Icons.person,
+            ),
+            SizedBox(
+              height: 40,
             ),
             CustomText(
               label: "password",
@@ -81,6 +88,9 @@ class Login extends StatelessWidget {
                 ),
               ],
             ),
+            SizedBox(
+              width: 50,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -89,6 +99,7 @@ class Login extends StatelessWidget {
                 ),
               ],
             ),
+
             // Button
             // Padding(
             //   padding: const EdgeInsets.all(16.0),
