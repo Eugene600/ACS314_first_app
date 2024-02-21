@@ -127,15 +127,31 @@ class Login extends StatelessWidget {
               ),
               SizedBox(
                 width: 50,
+                height: 20,
               ),
+
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  // TextButton(),
+                  CustomButton(
+                    label: "Register",
+                    icon: Icons.app_registration_rounded,
+                  ),
+
+                  SizedBox(
+                    width: 300,
+                  ),
                   CustomButton(
                     label: "Login",
+                    icon: Icons.login,
                   ),
                 ],
               ),
+
+              SizedBox(
+                height: 20,
+              )
 
               // Button
               // Padding(
