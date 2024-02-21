@@ -11,10 +11,26 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Wachira Industries"),
-        backgroundColor: appOrangeColor,
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.network(
+              "https://netstorage-tuko.akamaized.net/images/0fgjhs6ffkq54dn1o.jpg?imwidth=1200",
+              width: 200.0,
+              height: 100.0,
+            ),
+            // SizedBox(
+            //   width: 150,
+            // ),
+            Text(
+              "Daystar University",
+            ),
+          ],
+        ),
+        backgroundColor: primaryColor,
         foregroundColor: appWhiteColor,
         centerTitle: true,
+        toolbarHeight: 150,
         actions: [
           Icon(Icons.refresh),
         ],
@@ -29,8 +45,8 @@ class Login extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.network(
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG2IwWWEg6vbDwIC4hBcZKkJl5dVo1jc6Tyz9pjIPFworWBeLqCpBUqITJ_ssrAQl75zw&usqp=CAU"),
+                // Image.network(
+                //     ""),
               ],
             ),
             SizedBox(
@@ -42,7 +58,7 @@ class Login extends StatelessWidget {
                 CustomText(
                   label: "Welcome to Our Portal",
                   fontSize: 50,
-                  labelColor: Colors.red,
+                  labelColor: primaryColor,
                 ),
               ],
             ),
