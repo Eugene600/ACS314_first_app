@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/Views/navigationDestinations.dart';
 import 'package:flutter_application_2/configs/constants.dart';
 
 class HomePage extends StatelessWidget {
@@ -29,21 +30,22 @@ class HomePage extends StatelessWidget {
           Icon(Icons.refresh),
         ],
       ),
-      bottomNavigationBar: NavigationBar(destinations: [
-        NavigationDestination(
-          icon: Icon(Icons.home),
+      bottomNavigationBar:
+          NavigationBar(backgroundColor: Colors.grey, destinations: [
+        NavigationDestinations(
+          icon: Icons.home,
           label: "Home",
         ),
-        NavigationDestination(
-          icon: Icon(Icons.explore),
+        NavigationDestinations(
+          icon: Icons.explore,
           label: "Explore",
         ),
-        NavigationDestination(
-          icon: Icon(Icons.person),
+        NavigationDestinations(
+          icon: Icons.person,
           label: "Profile",
         ),
-        NavigationDestination(
-          icon: Icon(Icons.settings_accessibility_rounded),
+        NavigationDestinations(
+          icon: Icons.settings,
           label: "Settings",
         ),
       ]),
