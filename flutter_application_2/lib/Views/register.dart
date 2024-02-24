@@ -127,9 +127,7 @@ class Register extends StatelessWidget {
                     icon: Icons.login,
                   ),
 
-                  SizedBox(
-                    width: 300,
-                  ),
+                  Spacer(),
 
                   CustomButton(
                     label: "Register",
