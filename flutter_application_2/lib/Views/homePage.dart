@@ -29,6 +29,24 @@ class HomePage extends StatelessWidget {
           Icon(Icons.refresh),
         ],
       ),
+      bottomNavigationBar: NavigationBar(destinations: [
+        NavigationDestination(
+          icon: Icon(Icons.home),
+          label: "Home",
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.explore),
+          label: "Explore",
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.person),
+          label: "Profile",
+        ),
+        NavigationDestination(
+          icon: Icon(Icons.settings_accessibility_rounded),
+          label: "Settings",
+        ),
+      ]),
     );
   }
 }
