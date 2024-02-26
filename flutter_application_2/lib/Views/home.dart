@@ -1,17 +1,22 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/Controller/homePage_controller.dart';
+import 'package:flutter_application_2/Views/calculator.dart';
+import 'package:flutter_application_2/Views/homePage.dart';
+import 'package:flutter_application_2/Views/students.dart';
 import 'package:flutter_application_2/configs/constants.dart';
+import 'package:get/get.dart';
 
 //Class File
 var screens = [
-  Text("Home"),
-  Text("Booking"),
-  Text("Settings"),
-  Text("Profile"),
+  Calculator(),
+  Students(),
+  Calculator(),
+  Calculator(),
 ];
 
-var selectedPage = 0;
+HomePage_controller homePage_controller = Get.put(HomePage_controller());
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -19,7 +24,9 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[selectedPage],
+      body: Obx(() => Center(
+            child: screens[homePage_controller.selectedPage.value],
+          )),
       bottomNavigationBar: CurvedNavigationBar(
         items: [
           Icon(
@@ -43,7 +50,7 @@ class Home extends StatelessWidget {
         backgroundColor: appWhiteColor,
         buttonBackgroundColor: primaryColor,
         onTap: (index) {
-          print(index);
+          homePage_controller.updateSelectedPage(index);
         },
       ),
     );
