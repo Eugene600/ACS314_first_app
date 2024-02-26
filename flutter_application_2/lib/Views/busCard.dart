@@ -52,7 +52,7 @@ class BusCard extends StatelessWidget {
             Text(
               buses.busDescription,
               style: TextStyle(
-                fontSize: 14.0,
+                fontSize: 18.0,
                 color: Colors.grey,
               ),
             ),
