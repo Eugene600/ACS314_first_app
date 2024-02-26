@@ -108,7 +108,9 @@ class Register extends StatelessWidget {
               SizedBox(
                 height: 40,
               ),
-
+              CustomText(
+                label: "Confirm Password",
+              ),
               CustomTextField(
                 hint: "Confirm Password",
                 icon: Icons.lock,
