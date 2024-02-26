@@ -7,11 +7,13 @@ import 'package:flutter_application_2/Views/homePage.dart';
 import 'package:flutter_application_2/Views/login.dart';
 import 'package:flutter_application_2/Views/register.dart';
 import 'package:flutter_application_2/configs/constants.dart';
+import 'package:flutter_application_2/utils/routes.dart';
 import 'package:get/get.dart';
 
 void main() {
   runApp(GetMaterialApp(
     initialRoute: "/",
+    getPages: Routes.routes,
     debugShowCheckedModeBanner: false,
   )); //MaterialApp
 }

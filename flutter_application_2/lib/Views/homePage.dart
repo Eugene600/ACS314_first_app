@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/Views/busCard.dart';
 import 'package:flutter_application_2/Views/navigationDestinations.dart';
@@ -69,25 +70,29 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar:
-          NavigationBar(backgroundColor: Colors.grey, destinations: [
-        NavigationDestinations(
-          icon: Icons.home,
-          label: "Home",
-        ),
-        NavigationDestinations(
-          icon: Icons.bus_alert_rounded,
-          label: "Booking",
-        ),
-        NavigationDestinations(
-          icon: Icons.person,
-          label: "Profile",
-        ),
-        NavigationDestinations(
-          icon: Icons.settings,
-          label: "Settings",
-        ),
-      ]),
+      bottomNavigationBar: CurvedNavigationBar(
+        items: [
+          Icon(
+            Icons.home,
+            color: appWhiteColor,
+          ),
+          Icon(
+            Icons.bus_alert_rounded,
+            color: appWhiteColor,
+          ),
+          Icon(
+            Icons.person,
+            color: appWhiteColor,
+          ),
+          Icon(
+            Icons.settings,
+            color: appWhiteColor,
+          ),
+        ],
+        color: primaryColor,
+        backgroundColor: appWhiteColor,
+        buttonBackgroundColor: primaryColor,
+      ),
     );
   }
 }

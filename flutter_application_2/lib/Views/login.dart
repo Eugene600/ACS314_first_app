@@ -3,6 +3,7 @@ import 'package:flutter_application_2/Views/customButton.dart';
 import 'package:flutter_application_2/Views/customTextField.dart';
 import 'package:flutter_application_2/Views/customtext.dart';
 import 'package:flutter_application_2/configs/constants.dart';
+import 'package:get/get.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -115,13 +116,34 @@ class Login extends StatelessWidget {
                   CustomButton(
                     label: "Register",
                     icon: Icons.app_registration_rounded,
+                    action: () {
+                      Get.offAndToNamed("/Registration");
+                    },
                   ),
 
                   Spacer(),
+                  SizedBox(
+                    height: 5.0,
+                  ),
                   CustomButton(
                     label: "Login",
                     icon: Icons.login,
+                    action: () {
+                      Get.offAndToNamed("/Home");
+                    },
                   ),
+                  // MaterialButton(
+                  //   onPressed: ()=> Get.offAndToNamed("/Home"),
+                  //   child: Text(
+                  //     "Login",
+                  //     style: TextStyle(
+                  //       color: appWhiteColor,
+                  //     ),
+                  //   ),
+                  //   color: primaryColor,
+                  //   height: 10,
+                  //   // minWidth: double.maxFinite,
+                  // ),
                 ],
               ),
 
@@ -133,5 +155,9 @@ class Login extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void loginin() {
+    Get.offAndToNamed("/Home");
   }
 }
