@@ -10,7 +10,7 @@ import 'package:flutter_application_2/configs/constants.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: HomePage(),
+    home: Login(),
     debugShowCheckedModeBanner: false,
   )); //MaterialApp
 }

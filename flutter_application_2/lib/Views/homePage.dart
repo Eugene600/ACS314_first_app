@@ -11,29 +11,29 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Bus> buses = [
       Bus(
-          driverName: "Kimani",
+          busName: "Luxury Bus",
+          busDescription:
+              "On July 18, 2023, Daystar University received and dedicated a new 62-seater luxury coach during a Chapel service held at Main campus Athi River. The dedication ceremony was attended by the Vice-chancellor, Prof. Laban Ayiro, Company Member Bishop Emeritus Rt. Rev. Joseph Kanuku, Company Board Vice-chair, Dr. Stanley Mukolwe, Council Member Mrs. Lilian Ogolla, DVC Finance Administration and Planning Prof Muturi Wachira, DVC Academic Research and Student Affairs Prof. Faith Nguru, University Chaplain Rev. Miano Weche, members of Management and Senate, students, faculty and staff.",
+          img:
+              "https://www.daystar.ac.ke/blog/uploads/1689839708_daystar-bus-1.jpg"),
+      Bus(
+          busName: "Student Bus ",
+          busDescription:
+              "New Bus bought last year and has a capacity of 64 students.",
+          img:
+              "https://scontent.fnbo8-1.fna.fbcdn.net/v/t1.6435-9/67190047_2509416192411716_2522599077951045632_n.png?_nc_cat=101&ccb=1-7&_nc_sid=7f8c78&_nc_ohc=94u49WLzOHsAX9WEe_E&_nc_ht=scontent.fnbo8-1.fna&oh=00_AfAOPyap2G44hpu2EnxdWrgg-7zsu9omckxFlZtN6-2sLQ&oe=6603B64A"),
+      Bus(
+          busName: "Staff Bus",
           busDescription:
               "New Bus bought last year and has a capacity of 64 students.",
           img:
               "https://www.daystar.ac.ke/blog/uploads/1689839708_daystar-bus-1.jpg"),
       Bus(
-          driverName: "Kimani",
+          busName: "Rented Buses",
           busDescription:
               "New Bus bought last year and has a capacity of 64 students.",
           img:
-              "https://www.daystar.ac.ke/blog/uploads/1689839708_daystar-bus-1.jpg"),
-      Bus(
-          driverName: "Kimani",
-          busDescription:
-              "New Bus bought last year and has a capacity of 64 students.",
-          img:
-              "https://www.daystar.ac.ke/blog/uploads/1689839708_daystar-bus-1.jpg"),
-      Bus(
-          driverName: "Kimani",
-          busDescription:
-              "New Bus bought last year and has a capacity of 64 students.",
-          img:
-              "https://www.daystar.ac.ke/blog/uploads/1689839708_daystar-bus-1.jpg"),
+              "https://i0.wp.com/biznakenya.com/wp-content/uploads/2021/02/Super-Metro-Routes.jpg"),
     ];
     return Scaffold(
       appBar: AppBar(
@@ -82,8 +82,8 @@ class HomePage extends StatelessWidget {
           label: "Home",
         ),
         NavigationDestinations(
-          icon: Icons.explore,
-          label: "Explore",
+          icon: Icons.bus_alert_rounded,
+          label: "Booking",
         ),
         NavigationDestinations(
           icon: Icons.person,

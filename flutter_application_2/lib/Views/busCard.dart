@@ -4,12 +4,12 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_application_2/Views/homePage.dart';
 
 class Bus {
-  final String driverName;
+  final String busName;
   final String busDescription;
   final String img;
 
   Bus({
-    required this.driverName,
+    required this.busName,
     required this.busDescription,
     required this.img,
   });
@@ -36,13 +36,13 @@ class BusCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8.0),
                 image: DecorationImage(
                   image: NetworkImage(buses.img),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 ),
               ),
             ),
             SizedBox(height: 16.0),
             Text(
-              buses.driverName,
+              buses.busName,
               style: TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
