@@ -11,9 +11,9 @@ import 'package:get/get.dart';
 //Class File
 var screens = [
   HomePage(),
+  Calculator(),
+  Calculator(),
   Students(),
-  Calculator(),
-  Calculator(),
 ];
 
 HomePage_controller homePage_controller = Get.put(HomePage_controller());
@@ -27,7 +27,9 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(Icons.home_filled),
-          onPressed: () {},
+          onPressed: () {
+            Get.offAndToNamed("/Home");
+          },
         ),
         title: Column(
           mainAxisAlignment: MainAxisAlignment.center,

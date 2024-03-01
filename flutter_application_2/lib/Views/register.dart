@@ -3,6 +3,7 @@ import 'package:flutter_application_2/Views/customButton.dart';
 import 'package:flutter_application_2/Views/customTextField.dart';
 import 'package:flutter_application_2/Views/customtext.dart';
 import 'package:flutter_application_2/configs/constants.dart';
+import 'package:get/get.dart';
 
 class Register extends StatelessWidget {
   const Register({super.key});
@@ -127,6 +128,9 @@ class Register extends StatelessWidget {
                   CustomButton(
                     label: "Login",
                     icon: Icons.login,
+                    action: () {
+                      Get.offAndToNamed("/Login");
+                    },
                   ),
 
                   Spacer(),
@@ -134,6 +138,9 @@ class Register extends StatelessWidget {
                   CustomButton(
                     label: "Register",
                     icon: Icons.app_registration_rounded,
+                    action: () {
+                      Get.offAndToNamed("/home");
+                    },
                   ),
                 ],
               ),
