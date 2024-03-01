@@ -12,8 +12,8 @@ import 'package:get/get.dart';
 var screens = [
   HomePage(),
   Calculator(),
-  Calculator(),
   Students(),
+  Calculator(),
 ];
 
 HomePage_controller homePage_controller = Get.put(HomePage_controller());

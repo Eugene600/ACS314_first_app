@@ -139,7 +139,7 @@ class Register extends StatelessWidget {
                     label: "Register",
                     icon: Icons.app_registration_rounded,
                     action: () {
-                      Get.offAndToNamed("/home");
+                      Get.offAndToNamed("/Home");
                     },
                   ),
                 ],
