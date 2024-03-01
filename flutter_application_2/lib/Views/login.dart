@@ -10,6 +10,14 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData mediaQueryData = MediaQuery.of(context);
+
+    double screenWidth = mediaQueryData.size.width;
+    double screenHeight = mediaQueryData.size.height;
+
+    double devicePixelRatio = mediaQueryData.devicePixelRatio;
+
+    Orientation orientation = mediaQueryData.orientation;
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
