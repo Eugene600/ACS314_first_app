@@ -11,7 +11,7 @@ class Routes {
     GetPage(name: "/Login", page: () => Login()),
     GetPage(name: "/calculator", page: () => Calculator()),
     GetPage(name: "/Registration", page: () => Register()),
-    // GetPage(name: "/Home", page: () => HomePage()),
+    GetPage(name: "/HomePage", page: () => HomePage()),
     GetPage(name: "/Home", page: () => Home()),
   ];
 }

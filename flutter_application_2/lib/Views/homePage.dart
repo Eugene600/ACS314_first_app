@@ -1,8 +1,10 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/Views/busCard.dart';
+import 'package:flutter_application_2/Views/home.dart';
 import 'package:flutter_application_2/Views/navigationDestinations.dart';
 import 'package:flutter_application_2/configs/constants.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 class HomePage extends StatelessWidget {
   // const HomePage({super.key});
@@ -30,69 +32,69 @@ class HomePage extends StatelessWidget {
           img:
               "https://i0.wp.com/biznakenya.com/wp-content/uploads/2021/02/Super-Metro-Routes.jpg"),
     ];
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {},
+    // return Scaffold(
+    // appBar: AppBar(
+    //   leading: IconButton(
+    //     icon: Icon(Icons.arrow_back),
+    //     onPressed: () {},
+    //   ),
+    //   title: Column(
+    //     mainAxisAlignment: MainAxisAlignment.center,
+    //     children: [
+    //       Image.network(
+    //         "https://netstorage-tuko.akamaized.net/images/0fgjhs6ffkq54dn1o.jpg?imwidth=1200",
+    //         width: 200.0,
+    //         height: 100.0,
+    //       ),
+    //       Text(
+    //         "Daystar University",
+    //       ),
+    //     ],
+    //   ),
+    //   backgroundColor: primaryColor,
+    //   foregroundColor: appWhiteColor,
+    //   centerTitle: true,
+    //   toolbarHeight: 150,
+    //   actions: [
+    //     Icon(Icons.refresh),
+    //   ],
+    // ),
+    return Column(
+      children: [
+        Expanded(
+          child: ListView.builder(
+            scrollDirection: Axis.vertical,
+            itemCount: buses.length,
+            itemBuilder: (context, index) {
+              return BusCard(buses: buses[index]);
+            },
+          ),
         ),
-        title: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.network(
-              "https://netstorage-tuko.akamaized.net/images/0fgjhs6ffkq54dn1o.jpg?imwidth=1200",
-              width: 200.0,
-              height: 100.0,
-            ),
-            Text(
-              "Daystar University",
-            ),
-          ],
-        ),
-        backgroundColor: primaryColor,
-        foregroundColor: appWhiteColor,
-        centerTitle: true,
-        toolbarHeight: 150,
-        actions: [
-          Icon(Icons.refresh),
-        ],
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              scrollDirection: Axis.vertical,
-              itemCount: buses.length,
-              itemBuilder: (context, index) {
-                return BusCard(buses: buses[index]);
-              },
-            ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: CurvedNavigationBar(
-        items: [
-          Icon(
-            Icons.home,
-            color: appWhiteColor,
-          ),
-          Icon(
-            Icons.bus_alert_rounded,
-            color: appWhiteColor,
-          ),
-          Icon(
-            Icons.person,
-            color: appWhiteColor,
-          ),
-          Icon(
-            Icons.settings,
-            color: appWhiteColor,
-          ),
-        ],
-        color: primaryColor,
-        backgroundColor: appWhiteColor,
-        buttonBackgroundColor: primaryColor,
-      ),
+      ],
     );
+
+    // bottomNavigationBar: CurvedNavigationBar(
+    //   items: [
+    //     Icon(
+    //       Icons.home,
+    //       color: appWhiteColor,
+    //     ),
+    //     Icon(
+    //       Icons.bus_alert_rounded,
+    //       color: appWhiteColor,
+    //     ),
+    //     Icon(
+    //       Icons.person,
+    //       color: appWhiteColor,
+    //     ),
+    //     Icon(
+    //       Icons.settings,
+    //       color: appWhiteColor,
+    //     ),
+    //   ],
+    //   color: primaryColor,
+    //   backgroundColor: appWhiteColor,
+    //   buttonBackgroundColor: primaryColor,
+    // ),
   }
 }
