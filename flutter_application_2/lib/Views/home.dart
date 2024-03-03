@@ -13,7 +13,6 @@ import 'package:get/get.dart';
 var screens = [
   HomePage(),
   Calculator(),
-  Students(),
   Settings(),
 ];
 
@@ -34,25 +33,39 @@ class Home extends StatelessWidget {
     Orientation orientation = mediaQueryData.orientation;
     return Scaffold(
       appBar: AppBar(
+        // leading: IconButton(
+        //   icon: Icon(Icons.home_filled),
+        //   onPressed: () {
+        //     Get.offAndToNamed("/Home");
+        //   },
+        // ),
+        // leading: Image.network(
+        //   "https://netstorage-tuko.akamaized.net/images/0fgjhs6ffkq54dn1o.jpg?imwidth=1200",
+        //   // width: 500.0,
+        //   height: 650.0,
+        // ),
         leading: IconButton(
           icon: Icon(Icons.home_filled),
           onPressed: () {
             Get.offAndToNamed("/Home");
           },
         ),
-        title: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.network(
-              "https://netstorage-tuko.akamaized.net/images/0fgjhs6ffkq54dn1o.jpg?imwidth=1200",
-              width: 200.0,
-              height: 100.0,
-            ),
-            Text(
-              "Daystar University",
-            ),
-          ],
+        title: Text(
+          "Daystar University",
         ),
+        // title: Column(
+        //   mainAxisAlignment: MainAxisAlignment.center,
+        //   children: [
+        //     Image.network(
+        //       "https://netstorage-tuko.akamaized.net/images/0fgjhs6ffkq54dn1o.jpg?imwidth=1200",
+        //       width: 200.0,
+        //       height: 100.0,
+        //     ),
+        //     Text(
+        //       "Daystar University",
+        //     ),
+        //   ],
+        // ),
         backgroundColor: primaryColor,
         foregroundColor: appWhiteColor,
         centerTitle: true,
@@ -74,10 +87,10 @@ class Home extends StatelessWidget {
             Icons.bus_alert_rounded,
             color: appWhiteColor,
           ),
-          Icon(
-            Icons.person,
-            color: appWhiteColor,
-          ),
+          // Icon(
+          //   Icons.person,
+          //   color: appWhiteColor,
+          // ),
           Icon(
             Icons.settings,
             color: appWhiteColor,
