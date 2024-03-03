@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_2/Controller/homePage_controller.dart';
 import 'package:flutter_application_2/Views/calculator.dart';
 import 'package:flutter_application_2/Views/homePage.dart';
+import 'package:flutter_application_2/Views/settings.dart';
 import 'package:flutter_application_2/Views/students.dart';
 import 'package:flutter_application_2/configs/constants.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,7 @@ var screens = [
   HomePage(),
   Calculator(),
   Students(),
-  Calculator(),
+  Settings(),
 ];
 
 HomePage_controller homePage_controller = Get.put(HomePage_controller());

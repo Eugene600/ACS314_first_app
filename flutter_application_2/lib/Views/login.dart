@@ -59,7 +59,7 @@ class Login extends StatelessWidget {
                       Image.network(
                         "https://netstorage-tuko.akamaized.net/images/0fgjhs6ffkq54dn1o.jpg?imwidth=1200",
                         width: 300,
-                        height: 300,
+                        // height: 300,
                       ),
                       CustomText(
                         label: "Sign in",
