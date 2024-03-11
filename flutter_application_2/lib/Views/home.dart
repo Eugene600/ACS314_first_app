@@ -2,6 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/Controller/homePage_controller.dart';
+import 'package:flutter_application_2/Views/booking.dart';
 import 'package:flutter_application_2/Views/calculator.dart';
 import 'package:flutter_application_2/Views/homePage.dart';
 import 'package:flutter_application_2/Views/settings.dart';
@@ -12,7 +13,7 @@ import 'package:get/get.dart';
 //Class File
 var screens = [
   HomePage(),
-  Calculator(),
+  Booking(),
   Settings(),
 ];
 
@@ -44,12 +45,12 @@ class Home extends StatelessWidget {
         //   // width: 500.0,
         //   height: 650.0,
         // ),
-        leading: IconButton(
-          icon: Icon(Icons.home_filled),
-          onPressed: () {
-            Get.offAndToNamed("/Home");
-          },
-        ),
+        // leading: IconButton(
+        //   icon: Icon(Icons.home_filled),
+        //   onPressed: () {
+        //     Get.offAndToNamed("/Home");
+        //   },
+        // ),
         title: Text(
           "Daystar University",
         ),

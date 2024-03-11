@@ -3,21 +3,29 @@ import 'package:flutter_application_2/Views/customButton.dart';
 import 'package:flutter_application_2/Views/customTextField.dart';
 import 'package:flutter_application_2/Views/customtext.dart';
 import 'package:flutter_application_2/configs/constants.dart';
+import 'package:flutter_application_2/utils/sharedPreferences.dart';
 import 'package:get/get.dart';
+
+MySharedPreferences myPres = MySharedPreferences();
+TextEditingController userNameController = TextEditingController();
 
 class Login extends StatelessWidget {
   const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
-    MediaQueryData mediaQueryData = MediaQuery.of(context);
+    // MediaQueryData mediaQueryData = MediaQuery.of(context);
 
-    double screenWidth = mediaQueryData.size.width;
-    double screenHeight = mediaQueryData.size.height;
+    // double screenWidth = mediaQueryData.size.width;
+    // double screenHeight = mediaQueryData.size.height;
 
-    double devicePixelRatio = mediaQueryData.devicePixelRatio;
+    // double devicePixelRatio = mediaQueryData.devicePixelRatio;
 
-    Orientation orientation = mediaQueryData.orientation;
+    // Orientation orientation = mediaQueryData.orientation;
+
+    myPres.getValue("username").then((value) {
+      userNameController.text = value;
+    });
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -61,6 +69,10 @@ class Login extends StatelessWidget {
                         width: 300,
                         // height: 300,
                       ),
+                      // Image.asset(
+                      //   "assets/images/daystar-blue.png",
+                      //   width: 300,
+                      // ),
                       CustomText(
                         label: "Sign in",
                         fontSize: 50,
@@ -80,6 +92,7 @@ class Login extends StatelessWidget {
               CustomTextField(
                 hint: "Enter School email address",
                 icon: Icons.person,
+                controller: userNameController,
               ),
               SizedBox(
                 height: 40,
@@ -136,9 +149,7 @@ class Login extends StatelessWidget {
                   CustomButton(
                     label: "Login",
                     icon: Icons.login,
-                    action: () {
-                      Get.offAndToNamed("/Home");
-                    },
+                    action: loginin,
                   ),
                   // MaterialButton(
                   //   onPressed: ()=> Get.offAndToNamed("/Home"),
@@ -166,6 +177,8 @@ class Login extends StatelessWidget {
   }
 
   void loginin() {
+    Get.offAndToNamed("/Home");
+    myPres.writeValue("username", userNameController).then((value) => null);
     Get.offAndToNamed("/Home");
   }
 }
