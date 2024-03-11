@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/Controller/homePage_controller.dart';
 import 'package:flutter_application_2/Views/booking.dart';
+import 'package:flutter_application_2/Views/booking2.dart';
 import 'package:flutter_application_2/Views/calculator.dart';
 import 'package:flutter_application_2/Views/homePage.dart';
 import 'package:flutter_application_2/Views/settings.dart';
@@ -13,7 +14,7 @@ import 'package:get/get.dart';
 //Class File
 var screens = [
   HomePage(),
-  Booking(),
+  Booking2(),
   Settings(),
 ];
 
@@ -85,7 +86,7 @@ class Home extends StatelessWidget {
             color: appWhiteColor,
           ),
           Icon(
-            Icons.bus_alert_rounded,
+            Icons.person,
             color: appWhiteColor,
           ),
           // Icon(

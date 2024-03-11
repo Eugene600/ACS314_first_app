@@ -57,26 +57,26 @@ class Settings extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Icon(
-                    Icons.volume_up_outlined,
-                    color: Colors.blue,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    "Notifications",
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                  )
+                  // Icon(
+                  //   Icons.volume_up_outlined,
+                  //   color: Colors.blue,
+                  // ),
+                  // SizedBox(
+                  //   width: 10,
+                  // ),
+                  // Text(
+                  //   "Notifications",
+                  //   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  // )
                 ],
               ),
-              Divider(
-                height: 20,
-                thickness: 1,
-              ),
-              SizedBox(
-                height: 10,
-              ),
+              // Divider(
+              //   height: 20,
+              //   thickness: 1,
+              // ),
+              // SizedBox(
+              //   height: 10,
+              // ),
               // buildNotificationOption("Theme Dark", valNotify1),
             ],
           ),
