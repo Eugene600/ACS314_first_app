@@ -98,6 +98,24 @@ class _EditProfileState extends State<EditProfile> {
               icon: Icons.person,
               controller: userNameController,
             ),
+            CustomText(
+              label: "Bus pick-up location ",
+            ),
+            CustomTextField(
+              hint: "Please select where you normally board the bus",
+              icon: Icons.person,
+              controller: userNameController,
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            CustomButton(
+              label: "Edit Profile",
+              icon: Icons.edit,
+              action: () {
+                // Get.offAndToNamed("/Registration");
+              },
+            ),
           ],
         ),
       ),
