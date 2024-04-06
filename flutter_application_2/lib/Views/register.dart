@@ -1,23 +1,33 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/Views/customButton.dart';
 import 'package:flutter_application_2/Views/customTextField.dart';
 import 'package:flutter_application_2/Views/customtext.dart';
 import 'package:flutter_application_2/configs/constants.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+
+TextEditingController userNameController = TextEditingController();
+TextEditingController fNameController = TextEditingController();
+TextEditingController mNameController = TextEditingController();
+TextEditingController lNameController = TextEditingController();
+TextEditingController emailController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
 
 class Register extends StatelessWidget {
   const Register({super.key});
 
   @override
   Widget build(BuildContext context) {
-    MediaQueryData mediaQueryData = MediaQuery.of(context);
+    // MediaQueryData mediaQueryData = MediaQuery.of(context);
 
-    double screenWidth = mediaQueryData.size.width;
-    double screenHeight = mediaQueryData.size.height;
+    // double screenWidth = mediaQueryData.size.width;
+    // double screenHeight = mediaQueryData.size.height;
 
-    double devicePixelRatio = mediaQueryData.devicePixelRatio;
+    // double devicePixelRatio = mediaQueryData.devicePixelRatio;
 
-    Orientation orientation = mediaQueryData.orientation;
+    // Orientation orientation = mediaQueryData.orientation;
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -71,11 +81,23 @@ class Register extends StatelessWidget {
                 height: 30,
               ),
               CustomText(
+                label: "admission number",
+              ),
+              CustomTextField(
+                hint: "admission number",
+                icon: Icons.person,
+                controller: userNameController,
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              CustomText(
                 label: "First Name",
               ),
               CustomTextField(
                 hint: "First Name",
                 icon: Icons.person,
+                controller: fNameController,
               ),
               SizedBox(
                 height: 40,
@@ -86,6 +108,7 @@ class Register extends StatelessWidget {
               CustomTextField(
                 hint: "Middle Name",
                 icon: Icons.person,
+                controller: mNameController,
               ),
               SizedBox(
                 height: 40,
@@ -96,16 +119,18 @@ class Register extends StatelessWidget {
               CustomTextField(
                 hint: "Last Name",
                 icon: Icons.person,
+                controller: lNameController,
               ),
               SizedBox(
                 height: 40,
               ),
               CustomText(
-                label: "Email Address",
+                label: "email Address",
               ),
               CustomTextField(
                 hint: "email address",
                 icon: Icons.person,
+                controller: emailController,
               ),
               SizedBox(
                 height: 40,
@@ -118,6 +143,7 @@ class Register extends StatelessWidget {
                 icon: Icons.lock,
                 prefIcon: Icons.visibility,
                 isPassword: true,
+                controller: passwordController,
               ),
               SizedBox(
                 height: 40,
@@ -130,6 +156,7 @@ class Register extends StatelessWidget {
                 icon: Icons.lock,
                 prefIcon: Icons.visibility,
                 isPassword: true,
+                controller: passwordController,
               ),
               SizedBox(
                 height: 40,
@@ -152,7 +179,7 @@ class Register extends StatelessWidget {
                     label: "Register",
                     icon: Icons.app_registration_rounded,
                     action: () {
-                      Get.offAndToNamed("/Home");
+                      remoteSignUp();
                     },
                   ),
                 ],
@@ -166,5 +193,32 @@ class Register extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> remoteSignUp() async {
+    http.Response response;
+    var body = {
+      'adm_no': userNameController.text.trim(),
+      'first_name': fNameController.text.trim(),
+      'middle_name': mNameController.text.trim(),
+      'last_name': lNameController.text.trim(),
+      'email': emailController.text.trim(),
+      'password': passwordController.text.trim(),
+    };
+    response = await http.post(
+      Uri.parse("https://eugenewachira.co.ke/studentAccount/signUp.php"),
+      body: body,
+    );
+    if (response.statusCode == 200) {
+      var serverResponse = json.decode(response.body);
+      int signedUp = serverResponse['success'];
+      if (signedUp == 1) {
+        Get.offAndToNamed("/");
+      }
+      // else {
+      //   print("Error");
+      //   Get.offAndToNamed("/Registration");
+      // }
+    }
   }
 }

@@ -201,6 +201,8 @@ class Login extends StatelessWidget {
         print("Admission number or password is invalid");
         Get.offAndToNamed("/Login");
       }
+    } else {
+      print("Server Error ${response.statusCode}");
     }
   }
 }
