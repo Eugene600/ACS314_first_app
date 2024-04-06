@@ -47,8 +47,13 @@ class Register extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      Image.network(
-                        "https://netstorage-tuko.akamaized.net/images/0fgjhs6ffkq54dn1o.jpg?imwidth=1200",
+                      // Image.network(
+                      //   "https://netstorage-tuko.akamaized.net/images/0fgjhs6ffkq54dn1o.jpg?imwidth=1200",
+                      //   width: 300,
+                      //   height: 300,
+                      // ),
+                      Image.asset(
+                        "assets/images//daystar-blue.png",
                         width: 300,
                         height: 300,
                       ),

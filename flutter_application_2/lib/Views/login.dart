@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/Views/customButton.dart';
 import 'package:flutter_application_2/Views/customTextField.dart';
@@ -5,9 +7,11 @@ import 'package:flutter_application_2/Views/customtext.dart';
 import 'package:flutter_application_2/configs/constants.dart';
 import 'package:flutter_application_2/utils/sharedPreferences.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
 MySharedPreferences myPres = MySharedPreferences();
 TextEditingController userNameController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -23,7 +27,7 @@ class Login extends StatelessWidget {
 
     // Orientation orientation = mediaQueryData.orientation;
 
-    myPres.getValue("username").then((value) {
+    myPres.getValue("admission number").then((value) {
       userNameController.text = value;
     });
     return Scaffold(
@@ -64,15 +68,16 @@ class Login extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      Image.network(
-                        "https://netstorage-tuko.akamaized.net/images/0fgjhs6ffkq54dn1o.jpg?imwidth=1200",
-                        width: 300,
-                        // height: 300,
-                      ),
-                      // Image.asset(
-                      //   "assets/images//daystar-blue.png",
+                      // Image.network(
+                      //   "https://netstorage-tuko.akamaized.net/images/0fgjhs6ffkq54dn1o.jpg?imwidth=1200",
                       //   width: 300,
+                      //   // height: 300,
                       // ),
+                      Image.asset(
+                        "assets/images//daystar-blue.png",
+                        width: 300,
+                        height: 300,
+                      ),
                       CustomText(
                         label: "Sign in",
                         fontSize: 50,
@@ -87,10 +92,10 @@ class Login extends StatelessWidget {
                 height: 30,
               ),
               CustomText(
-                label: "username",
+                label: "admission number",
               ),
               CustomTextField(
-                hint: "Enter School email address",
+                hint: "Enter Admission Number",
                 icon: Icons.person,
                 controller: userNameController,
               ),
@@ -105,6 +110,7 @@ class Login extends StatelessWidget {
                 icon: Icons.lock,
                 prefIcon: Icons.visibility,
                 isPassword: true,
+                controller: passwordController,
               ),
 
               Row(
@@ -177,8 +183,24 @@ class Login extends StatelessWidget {
   }
 
   void loginin() {
-    Get.offAndToNamed("/Home");
-    myPres.writeValue("username", userNameController).then((value) => null);
-    Get.offAndToNamed("/Home");
+    // myPres.writeValue("admission number", userNameController).then((value) => null);
+    // Get.offAndToNamed("/Home");
+    remoteLogin();
+  }
+
+  Future<void> remoteLogin() async {
+    http.Response response;
+    response = await http.get(Uri.parse(
+        "https://eugenewachira.co.ke/studentAccount/login.php?adm_no=${userNameController.text.trim()}&password=${passwordController.text.trim()}"));
+    if (response.statusCode == 200) {
+      var serverResponse = json.decode(response.body);
+      int loginStatus = serverResponse['success'];
+      if (loginStatus == 1) {
+        Get.offAndToNamed("/Home");
+      } else {
+        print("Admission number or password is invalid");
+        Get.offAndToNamed("/Login");
+      }
+    }
   }
 }
