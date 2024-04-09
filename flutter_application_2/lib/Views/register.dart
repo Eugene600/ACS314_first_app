@@ -145,19 +145,19 @@ class Register extends StatelessWidget {
                 isPassword: true,
                 controller: passwordController,
               ),
-              SizedBox(
-                height: 40,
-              ),
-              CustomText(
-                label: "Confirm Password",
-              ),
-              CustomTextField(
-                hint: "Confirm Password",
-                icon: Icons.lock,
-                prefIcon: Icons.visibility,
-                isPassword: true,
-                controller: passwordController,
-              ),
+              // SizedBox(
+              //   height: 40,
+              // ),
+              // CustomText(
+              //   label: "Confirm Password",
+              // ),
+              // CustomTextField(
+              //   hint: "Confirm Password",
+              //   icon: Icons.lock,
+              //   prefIcon: Icons.visibility,
+              //   isPassword: true,
+              //   controller: passwordController,
+              // ),
               SizedBox(
                 height: 40,
               ),
@@ -213,12 +213,11 @@ class Register extends StatelessWidget {
       var serverResponse = json.decode(response.body);
       int signedUp = serverResponse['success'];
       if (signedUp == 1) {
-        Get.offAndToNamed("/");
+        Get.offAndToNamed("/Login");
+      } else {
+        print("Error");
+        Get.offAndToNamed("/Registration");
       }
-      // else {
-      //   print("Error");
-      //   Get.offAndToNamed("/Registration");
-      // }
     }
   }
 }

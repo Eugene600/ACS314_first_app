@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
           busDescription:
               "This bus has a bus capacity of 48. It is mostly used by both Students and Staff. They travel from Athi-River Campus to Valley Road Campus and vice versa.",
           img:
-              "https://scontent.fnbo8-1.fna.fbcdn.net/v/t1.6435-9/67190047_2509416192411716_2522599077951045632_n.png?_nc_cat=101&ccb=1-7&_nc_sid=7f8c78&_nc_ohc=94u49WLzOHsAX9WEe_E&_nc_ht=scontent.fnbo8-1.fna&oh=00_AfAOPyap2G44hpu2EnxdWrgg-7zsu9omckxFlZtN6-2sLQ&oe=6603B64A"),
+              "https://rcfcwe.stripocdn.email/content/guids/CABINET_73dde95be99682c004d96955cf167809/images/dsc07101.JPG"),
       Bus(
           busName: "Super Metro",
           busDescription:
