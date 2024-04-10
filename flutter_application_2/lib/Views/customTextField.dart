@@ -10,6 +10,7 @@ class CustomTextField extends StatelessWidget {
   final IconData? icon;
   final IconData? prefIcon;
   final bool isPassword;
+  final Function()? onTap;
 
   const CustomTextField({
     Key? key,
@@ -18,6 +19,7 @@ class CustomTextField extends StatelessWidget {
     this.prefIcon,
     this.isPassword = false,
     this.controller,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -25,6 +27,7 @@ class CustomTextField extends StatelessWidget {
     return Obx(() {
       bool isHidden = loginController.isHidden.value;
       return TextField(
+        onTap: onTap,
         controller: controller,
         obscureText: isPassword && isHidden,
         decoration: InputDecoration(
