@@ -160,7 +160,10 @@ class Booking extends StatelessWidget {
               selectedValue: selectedDroppingPoint,
               onChanged: (String? value) {
                 // Handle the dropdown value change
-                selectedDroppingPoint = value;
+                if (value == droppingPoint.text) {
+                  droppingPoint.text = '';
+                }
+                pickingPoint.text = value ?? '';
               },
             ),
             SizedBox(
@@ -187,7 +190,33 @@ class Booking extends StatelessWidget {
               selectedValue: selectedDroppingPoint,
               onChanged: (String? value) {
                 // Handle the dropdown value change
-                selectedDroppingPoint = value;
+                if (value == pickingPoint.text) {
+                  pickingPoint.text = '';
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                          'Cannot select the same location as Picking and Dropping Point'),
+                    ),
+                  );
+                }
+                if (pickingPoint.text == 'Athi River' ||
+                    pickingPoint.text == 'Valley Road') {
+                  // If picking point is Athi River or Valley Road, allow any dropping point
+                  droppingPoint.text = value ?? '';
+                } else if (pickingPoint.text != 'Athi River' &&
+                    pickingPoint.text != 'Valley Road' &&
+                    value == 'Athi River') {
+                  // If picking point is neither Athi River nor Valley Road, dropping point should only be Athi River
+                  droppingPoint.text = value ?? '';
+                } else {
+                  droppingPoint.text = '';
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                          'The Bus from Athi River to Valley Road only drops off students along Mombasa Road, it does not pick'),
+                    ),
+                  );
+                }
               },
             ),
             SizedBox(
@@ -235,7 +264,7 @@ class Booking extends StatelessWidget {
               selectedValue: selectedDroppingPoint,
               onChanged: (String? value) {
                 // Handle the dropdown value change
-                selectedDroppingPoint = value;
+                time.text = value ?? '';
               },
             ),
             SizedBox(
@@ -244,12 +273,19 @@ class Booking extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // Inside the build method of the Booking widget
                 CustomButton(
                   label: "Book Bus",
                   icon: Icons.bus_alert_outlined,
                   action: () {
-                    // Get.offAndToNamed("/Registration");
-                    if (pickingPoint.text != droppingPoint.text) {}
+                    // Check if picking point and dropping point are not equal
+                    print("Picking point: ${pickingPoint.text}");
+                    print("Dropping point: ${droppingPoint.text}");
+                    if (pickingPoint.text != droppingPoint.text) {
+                      print("Successfully booked");
+                    } else {
+                      print("You cannot pick the same location twice");
+                    }
                   },
                 ),
               ],
