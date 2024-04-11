@@ -248,7 +248,7 @@ class Booking extends StatelessWidget {
               label: "Time",
             ),
             CustomDropdown(
-              label: "Dropping Point",
+              label: "Time",
               hint: "Select where you will be alighting the bus",
               icon: Icons.location_city,
               dropdownItems: [
