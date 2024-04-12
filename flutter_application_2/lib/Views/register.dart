@@ -179,7 +179,34 @@ class Register extends StatelessWidget {
                     label: "Register",
                     icon: Icons.app_registration_rounded,
                     action: () {
-                      remoteSignUp();
+                      if (userNameController.text.isEmpty ||
+                          fNameController.text.isEmpty ||
+                          lNameController.text.isEmpty ||
+                          emailController.text.isEmpty ||
+                          passwordController.text.isEmpty) {
+                        // Show error message if any field is empty
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Error"),
+                              content: Text(
+                                  "Please fill in all fields. MIDDLE NAME IS THE ONLY FIELD THAT CAN BE LEFT BLANK"),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context)
+                                        .pushNamed("/Registration");
+                                  },
+                                  child: Text("OK"),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      } else {
+                        remoteSignUp();
+                      }
                     },
                   ),
                 ],
