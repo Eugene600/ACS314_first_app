@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/Views/customButton.dart';
 import 'package:flutter_application_2/Views/customTextField.dart';
@@ -155,7 +154,32 @@ class Login extends StatelessWidget {
                   CustomButton(
                     label: "Login",
                     icon: Icons.login,
-                    action: loginin,
+                    action: () {
+                      if (userNameController.text.isEmpty ||
+                          passwordController.text.isEmpty) {
+                        // Show error message if any field is empty
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text("Error"),
+                              content: Text(
+                                  "Please fill in both ADMISSION NUMBER and PASSWORD."),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pushNamed("/Login");
+                                  },
+                                  child: Text("OK"),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      } else {
+                        remoteLogin();
+                      }
+                    },
                   ),
                   // MaterialButton(
                   //   onPressed: ()=> Get.offAndToNamed("/Home"),
@@ -185,7 +209,7 @@ class Login extends StatelessWidget {
   void loginin() {
     // myPres.writeValue("admission number", userNameController).then((value) => null);
     // Get.offAndToNamed("/Home");
-    remoteLogin();
+    // remoteLogin();
   }
 
   Future<void> remoteLogin() async {
