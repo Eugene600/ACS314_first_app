@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/Views/customButton.dart';
@@ -5,6 +7,9 @@ import 'package:flutter_application_2/Views/customDropdown.dart';
 import 'package:flutter_application_2/Views/customTextField.dart';
 import 'package:flutter_application_2/Views/customtext.dart';
 import 'package:flutter_application_2/Views/register.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:http/http.dart' as http;
 import 'flutterCarousel.dart'; // Import your FlutterCarousel widget
 import 'package:intl/intl.dart';
 
@@ -13,6 +18,24 @@ TextEditingController droppingPoint = TextEditingController();
 TextEditingController date = TextEditingController();
 TextEditingController time = TextEditingController();
 String? selectedDroppingPoint;
+// List<String> generateDropdownItems(String pickingPointText) {
+//   if (pickingPoint.text == 'Athi River') {
+//     return [
+//       '5:00AM Bus(Only from Athi River)',
+//       '11:00AM Bus(Only from Athi River)',
+//       '1:00PM Bus(Only from Athi River)',
+//       '5:00PM Bus(Both from Athi River and Valley Road)',
+//     ];
+//   } else if (pickingPoint.text == 'Valley Road') {
+//     return [
+//       '6:30AM Bus(Only from Valley Road)',
+//       '5:00PM Bus(Both from Athi River and Valley Road)',
+//       'SUNDAY SPECIAL(Only from Valley Road)',
+//     ];
+//   } else {
+//     return ['No Buses Available'];
+//   }
+// }
 
 class Booking extends StatelessWidget {
   const Booking({Key? key}) : super(key: key);
@@ -160,6 +183,7 @@ class Booking extends StatelessWidget {
               selectedValue: selectedDroppingPoint,
               onChanged: (String? value) {
                 // Handle the dropdown value change
+                print('Picking Point: $value');
                 if (value == droppingPoint.text) {
                   droppingPoint.text = '';
                 }
@@ -278,14 +302,7 @@ class Booking extends StatelessWidget {
                   label: "Book Bus",
                   icon: Icons.bus_alert_outlined,
                   action: () {
-                    // Check if picking point and dropping point are not equal
-                    print("Picking point: ${pickingPoint.text}");
-                    print("Dropping point: ${droppingPoint.text}");
-                    if (pickingPoint.text != droppingPoint.text) {
-                      print("Successfully booked");
-                    } else {
-                      print("You cannot pick the same location twice");
-                    }
+                    remoteBooking(context);
                   },
                 ),
               ],
@@ -294,5 +311,84 @@ class Booking extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+Future<void> remoteBooking(BuildContext context) async {
+  http.Response response;
+  var body = {
+    'adm_no': userNameController.text.trim(),
+    'picking': pickingPoint.text.trim(),
+    'dropping': droppingPoint.text.trim(),
+    'date': date.text.trim(),
+    'time': time.text.trim(),
+  };
+  response = await http.post(
+    Uri.parse("https://eugenewachira.co.ke/studentAccount/busBooking.php"),
+    body: body,
+  );
+  if (response.statusCode == 200) {
+    var serverResponse = json.decode(response.body);
+    int signedUp = serverResponse['success'];
+    if (signedUp == 1) {
+      // Booking successful, show success message
+      if (pickingPoint.text != droppingPoint.text) {
+        // Booking successful, show success message
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Success"),
+              content: Text("You have successfully booked a bus."),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed("/Home");
+                  },
+                  child: Text("OK"),
+                ),
+              ],
+            );
+          },
+        );
+      } else {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text("Error"),
+              content: Text("You cannot pick the same location twice"),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop("/Booking");
+                  },
+                  child: Text("OK"),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    } else {
+      // Booking failed, show error message
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Error"),
+            content: Text("Booking failed. Please try again later."),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed("/Booking");
+                },
+                child: Text("OK"),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter_application_2/Views/booking.dart';
 import 'package:flutter_application_2/Views/calculator.dart';
 import 'package:flutter_application_2/Views/homePage.dart';
 import 'package:flutter_application_2/Views/login.dart';
@@ -15,5 +16,6 @@ class Routes {
     GetPage(name: "/HomePage", page: () => HomePage()),
     GetPage(name: "/Home", page: () => Home()),
     GetPage(name: "/Students", page: () => Students()),
+    GetPage(name: "/Booking", page: () => Booking()),
   ];
 }
