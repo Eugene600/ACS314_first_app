@@ -319,14 +319,32 @@ class Booking extends StatelessWidget {
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title: Text("Error"),
-                            content: Text("Please fill in all fields."),
+                            title: Text(
+                              "Error!!!!",
+                              style: TextStyle(
+                                color: Colors
+                                    .red, // Set the color of the title to red
+                              ),
+                            ),
+                            content: Text(
+                              "Please fill in all fields.",
+                              style: TextStyle(
+                                color: Colors
+                                    .blueAccent, // Set the color of the title to red
+                              ),
+                            ),
                             actions: <Widget>[
                               TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
                                 },
-                                child: Text("OK"),
+                                child: Text(
+                                  "OK",
+                                  style: TextStyle(
+                                    color: Colors
+                                        .blueAccent, // Set the color of the title to red
+                                  ),
+                                ),
                               ),
                             ],
                           );
@@ -371,8 +389,19 @@ Future<void> remoteBooking(BuildContext context) async {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text("Success"),
-              content: Text("You have successfully booked a bus."),
+              title: Text(
+                "Success!!!",
+                style: TextStyle(
+                  color:
+                      Colors.greenAccent, // Set the color of the title to red
+                ),
+              ),
+              content: Text(
+                "You have successfully booked a bus.",
+                style: TextStyle(
+                  color: Colors.blueAccent, // Set the color of the title to red
+                ),
+              ),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
@@ -392,7 +421,13 @@ Future<void> remoteBooking(BuildContext context) async {
                       );
                     });
                   },
-                  child: Text("OK"),
+                  child: Text(
+                    "OK",
+                    style: TextStyle(
+                      color: Colors
+                          .blueAccent, // Set the color of the title to red
+                    ),
+                  ),
                 ),
               ],
             );
@@ -403,8 +438,18 @@ Future<void> remoteBooking(BuildContext context) async {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text("Error"),
-              content: Text("You cannot pick the same location twice"),
+              title: Text(
+                "Error",
+                style: TextStyle(
+                  color: Colors.red, // Set the color of the title to red
+                ),
+              ),
+              content: Text(
+                "You cannot pick the same location twice",
+                style: TextStyle(
+                  color: Colors.blueAccent, // Set the color of the title to red
+                ),
+              ),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
@@ -424,7 +469,13 @@ Future<void> remoteBooking(BuildContext context) async {
                       );
                     });
                   },
-                  child: Text("OK"),
+                  child: Text(
+                    "OK",
+                    style: TextStyle(
+                      color: Colors
+                          .blueAccent, // Set the color of the title to red
+                    ),
+                  ),
                 ),
               ],
             );
@@ -437,8 +488,18 @@ Future<void> remoteBooking(BuildContext context) async {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Error"),
-            content: Text("Booking failed. Please try again later."),
+            title: Text(
+              "Error",
+              style: TextStyle(
+                color: Colors.red, // Set the color of the title to red
+              ),
+            ),
+            content: Text(
+              "Booking failed. Please try again later.",
+              style: TextStyle(
+                color: Colors.blueAccent, // Set the color of the title to red
+              ),
+            ),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
@@ -458,7 +519,13 @@ Future<void> remoteBooking(BuildContext context) async {
                     );
                   });
                 },
-                child: Text("OK"),
+                child: Text(
+                  "OK",
+                  style: TextStyle(
+                    color:
+                        Colors.blueAccent, // Set the color of the title to red
+                  ),
+                ),
               ),
             ],
           );

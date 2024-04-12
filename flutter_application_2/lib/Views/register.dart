@@ -189,16 +189,33 @@ class Register extends StatelessWidget {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text("Error"),
+                              title: Text(
+                                "Error",
+                                style: TextStyle(
+                                  color: Colors
+                                      .red, // Set the color of the title to red
+                                ),
+                              ),
                               content: Text(
-                                  "Please fill in all fields. MIDDLE NAME IS THE ONLY FIELD THAT CAN BE LEFT BLANK"),
+                                "Please fill in all fields. MIDDLE NAME IS THE ONLY FIELD THAT CAN BE LEFT BLANK",
+                                style: TextStyle(
+                                  color: Colors
+                                      .blueAccent, // Set the color of the title to red
+                                ),
+                              ),
                               actions: <Widget>[
                                 TextButton(
                                   onPressed: () {
                                     Navigator.of(context)
                                         .pushNamed("/Registration");
                                   },
-                                  child: Text("OK"),
+                                  child: Text(
+                                    "OK",
+                                    style: TextStyle(
+                                      color: Colors
+                                          .blueAccent, // Set the color of the title to red
+                                    ),
+                                  ),
                                 ),
                               ],
                             );
