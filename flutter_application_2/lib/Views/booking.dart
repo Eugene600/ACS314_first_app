@@ -6,6 +6,7 @@ import 'package:flutter_application_2/Views/customButton.dart';
 import 'package:flutter_application_2/Views/customDropdown.dart';
 import 'package:flutter_application_2/Views/customTextField.dart';
 import 'package:flutter_application_2/Views/customtext.dart';
+import 'package:flutter_application_2/Views/home.dart';
 import 'package:flutter_application_2/Views/register.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -18,6 +19,7 @@ TextEditingController droppingPoint = TextEditingController();
 TextEditingController date = TextEditingController();
 TextEditingController time = TextEditingController();
 String? selectedDroppingPoint;
+bool _validateAdmissionNumber = false;
 // List<String> generateDropdownItems(String pickingPointText) {
 //   if (pickingPoint.text == 'Athi River') {
 //     return [
@@ -158,6 +160,11 @@ class Booking extends StatelessWidget {
               hint: "Enter Admission Number",
               icon: Icons.person,
               controller: userNameController,
+              decoration: InputDecoration(
+                errorText: _validateAdmissionNumber
+                    ? 'Admission number is required'
+                    : null,
+              ),
             ),
             SizedBox(
               height: 40,
@@ -302,7 +309,33 @@ class Booking extends StatelessWidget {
                   label: "Book Bus",
                   icon: Icons.bus_alert_outlined,
                   action: () {
-                    remoteBooking(context);
+                    if (userNameController.text.isEmpty ||
+                        pickingPoint.text.isEmpty ||
+                        droppingPoint.text.isEmpty ||
+                        date.text.isEmpty ||
+                        time.text.isEmpty) {
+                      // Show error message if any field is empty
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text("Error"),
+                            content: Text("Please fill in all fields."),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text("OK"),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    } else {
+                      // All fields are filled, proceed with booking
+                      remoteBooking(context);
+                    }
                   },
                 ),
               ],
@@ -333,7 +366,7 @@ Future<void> remoteBooking(BuildContext context) async {
     if (signedUp == 1) {
       // Booking successful, show success message
       if (pickingPoint.text != droppingPoint.text) {
-        // Booking successful, show success message
+        // Booking successful, navigate to another page
         showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -343,7 +376,21 @@ Future<void> remoteBooking(BuildContext context) async {
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
-                    Navigator.of(context).pushNamed("/Home");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Home()), // Replace NextPage with the class name of the page you want to navigate to
+                    ).then((_) {
+                      // This code will run when the Booking screen is popped
+                      // You can add any functionality here that you want to execute after returning from the Booking screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                Booking()), // Replace NextPage with the class name of the page you want to navigate to
+                      );
+                    });
                   },
                   child: Text("OK"),
                 ),
@@ -361,7 +408,21 @@ Future<void> remoteBooking(BuildContext context) async {
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
-                    Navigator.of(context).pop("/Booking");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Home()), // Replace NextPage with the class name of the page you want to navigate to
+                    ).then((_) {
+                      // This code will run when the Booking screen is popped
+                      // You can add any functionality here that you want to execute after returning from the Booking screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                Booking()), // Replace NextPage with the class name of the page you want to navigate to
+                      );
+                    });
                   },
                   child: Text("OK"),
                 ),
@@ -381,7 +442,21 @@ Future<void> remoteBooking(BuildContext context) async {
             actions: <Widget>[
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed("/Booking");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            Home()), // Replace NextPage with the class name of the page you want to navigate to
+                  ).then((_) {
+                    // This code will run when the Booking screen is popped
+                    // You can add any functionality here that you want to execute after returning from the Booking screen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              Booking()), // Replace NextPage with the class name of the page you want to navigate to
+                    );
+                  });
                 },
                 child: Text("OK"),
               ),

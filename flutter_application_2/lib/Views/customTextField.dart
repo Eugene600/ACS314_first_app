@@ -11,6 +11,7 @@ class CustomTextField extends StatelessWidget {
   final IconData? prefIcon;
   final bool isPassword;
   final Function()? onTap;
+  final InputDecoration? decoration;
 
   const CustomTextField({
     Key? key,
@@ -20,6 +21,7 @@ class CustomTextField extends StatelessWidget {
     this.isPassword = false,
     this.controller,
     this.onTap,
+    this.decoration,
   }) : super(key: key);
 
   @override
