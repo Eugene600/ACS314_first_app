@@ -6,4 +6,9 @@ class LoginController extends GetxController {
   toggleHide() {
     isHidden.value = !isHidden.value;
   }
+
+  var admission = ''.obs;
+  updateAdmission(str) {
+    admission.value = str;
+  }
 }

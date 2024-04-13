@@ -153,22 +153,22 @@ class Booking extends StatelessWidget {
                 ),
               ),
             ),
-            CustomText(
-              label: "admission number",
-            ),
-            CustomTextField(
-              hint: "Enter Admission Number",
-              icon: Icons.person,
-              controller: userNameController,
-              decoration: InputDecoration(
-                errorText: _validateAdmissionNumber
-                    ? 'Admission number is required'
-                    : null,
-              ),
-            ),
-            SizedBox(
-              height: 40,
-            ),
+            // CustomText(
+            //   label: "admission number",
+            // ),
+            // CustomTextField(
+            //   hint: "Enter Admission Number",
+            //   icon: Icons.person,
+            //   controller: userNameController,
+            //   decoration: InputDecoration(
+            //     errorText: _validateAdmissionNumber
+            //         ? 'Admission number is required'
+            //         : null,
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: 40,
+            // ),
             CustomText(
               label: "Picking Point",
             ),
@@ -309,8 +309,7 @@ class Booking extends StatelessWidget {
                   label: "Book Bus",
                   icon: Icons.bus_alert_outlined,
                   action: () {
-                    if (userNameController.text.isEmpty ||
-                        pickingPoint.text.isEmpty ||
+                    if (pickingPoint.text.isEmpty ||
                         droppingPoint.text.isEmpty ||
                         date.text.isEmpty ||
                         time.text.isEmpty) {
@@ -336,7 +335,21 @@ class Booking extends StatelessWidget {
                             actions: <Widget>[
                               TextButton(
                                 onPressed: () {
-                                  Navigator.of(context).pop();
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            Home()), // Replace NextPage with the class name of the page you want to navigate to
+                                  ).then((_) {
+                                    // This code will run when the Booking screen is popped
+                                    // You can add any functionality here that you want to execute after returning from the Booking screen
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              Booking()), // Replace NextPage with the class name of the page you want to navigate to
+                                    );
+                                  });
                                 },
                                 child: Text(
                                   "OK",
@@ -368,7 +381,7 @@ class Booking extends StatelessWidget {
 Future<void> remoteBooking(BuildContext context) async {
   http.Response response;
   var body = {
-    'adm_no': userNameController.text.trim(),
+    'adm_no': loginController.admission.value,
     'picking': pickingPoint.text.trim(),
     'dropping': droppingPoint.text.trim(),
     'date': date.text.trim(),

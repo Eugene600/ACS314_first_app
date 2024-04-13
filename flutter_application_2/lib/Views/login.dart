@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/Controller/login_controller.dart';
 import 'package:flutter_application_2/Views/customButton.dart';
 import 'package:flutter_application_2/Views/customTextField.dart';
 import 'package:flutter_application_2/Views/customtext.dart';
@@ -11,6 +12,7 @@ import 'package:http/http.dart' as http;
 MySharedPreferences myPres = MySharedPreferences();
 TextEditingController userNameController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
+LoginController loginController = Get.put(LoginController());
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -234,6 +236,10 @@ class Login extends StatelessWidget {
       var serverResponse = json.decode(response.body);
       int loginStatus = serverResponse['success'];
       if (loginStatus == 1) {
+        var userData = serverResponse['userdata'];
+        var adm = userData[0]['adm_no'];
+        loginController.updateAdmission(adm);
+        print(adm);
         Get.offAndToNamed("/Home");
       } else {
         print("Admission number or password is invalid");
