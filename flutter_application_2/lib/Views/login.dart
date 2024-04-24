@@ -35,9 +35,9 @@ class Login extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           // padding: EdgeInsets.fromLTRB(40, 80, 40, 20),
-          padding: EdgeInsets.fromLTRB(40, 40, 40, 40),
+          padding: const EdgeInsets.fromLTRB(40, 40, 40, 40),
           child: Container(
-            padding: EdgeInsets.all(30),
+            padding: const EdgeInsets.all(30),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
@@ -46,7 +46,7 @@ class Login extends StatelessWidget {
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 5,
                   blurRadius: 7,
-                  offset: Offset(0, 3),
+                  offset: const Offset(0, 3),
                 ),
               ],
             ),
@@ -54,14 +54,14 @@ class Login extends StatelessWidget {
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               // Image.asset(
               //     "/home/eugene/Documents/ACS314 _Mobile_ Apps _Projects/flutter_application_2/flutter_application_2/assets/images/daystar-blue.png"),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // Image.network(
                   //     ""),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -79,7 +79,7 @@ class Login extends StatelessWidget {
                         width: 300,
                         height: 300,
                       ),
-                      CustomText(
+                      const CustomText(
                         label: "Sign in",
                         fontSize: 50,
                         labelColor: primaryColor,
@@ -89,10 +89,10 @@ class Login extends StatelessWidget {
                 ],
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              CustomText(
+              const CustomText(
                 label: "admission number",
               ),
               CustomTextField(
@@ -100,10 +100,10 @@ class Login extends StatelessWidget {
                 icon: Icons.person,
                 controller: userNameController,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
-              CustomText(
+              const CustomText(
                 label: "password",
               ),
               CustomTextField(
@@ -114,7 +114,7 @@ class Login extends StatelessWidget {
                 controller: passwordController,
               ),
 
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   CustomText(
@@ -132,7 +132,7 @@ class Login extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 50,
                 height: 20,
               ),
@@ -149,8 +149,8 @@ class Login extends StatelessWidget {
                     },
                   ),
 
-                  Spacer(),
-                  SizedBox(
+                  const Spacer(),
+                  const SizedBox(
                     height: 5.0,
                   ),
                   CustomButton(
@@ -164,14 +164,14 @@ class Login extends StatelessWidget {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text(
+                              title: const Text(
                                 "Error!!!",
                                 style: TextStyle(
                                   color: Colors
                                       .red, // Set the color of the title to red
                                 ),
                               ),
-                              content: Text(
+                              content: const Text(
                                 "Please fill in both ADMISSION NUMBER and PASSWORD.",
                                 style: TextStyle(
                                   color: Colors
@@ -183,7 +183,7 @@ class Login extends StatelessWidget {
                                   onPressed: () {
                                     Navigator.of(context).pushNamed("/Login");
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     "OK",
                                     style: TextStyle(color: Colors.blueAccent),
                                   ),
@@ -212,7 +212,7 @@ class Login extends StatelessWidget {
                 ],
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 20,
               )
             ]),

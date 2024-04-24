@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 var name = [
@@ -27,7 +26,7 @@ class Students extends StatelessWidget {
                   width: 100.0,
                   height: 100.0,
                 ),
-                Column(
+                const Column(
                   children: [
                     Text("Jackson Mwangi"),
                     Text("a214545454"),

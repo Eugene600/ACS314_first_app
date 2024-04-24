@@ -32,9 +32,9 @@ class Register extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           // padding: EdgeInsets.fromLTRB(40, 80, 40, 20),
-          padding: EdgeInsets.fromLTRB(40, 40, 40, 40),
+          padding: const EdgeInsets.fromLTRB(40, 40, 40, 40),
           child: Container(
-            padding: EdgeInsets.all(30),
+            padding: const EdgeInsets.all(30),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
@@ -43,7 +43,7 @@ class Register extends StatelessWidget {
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 5,
                   blurRadius: 7,
-                  offset: Offset(0, 3),
+                  offset: const Offset(0, 3),
                 ),
               ],
             ),
@@ -67,7 +67,7 @@ class Register extends StatelessWidget {
                         width: 300,
                         height: 300,
                       ),
-                      CustomText(
+                      const CustomText(
                         label: "Sign in",
                         fontSize: 50,
                         labelColor: primaryColor,
@@ -77,10 +77,10 @@ class Register extends StatelessWidget {
                 ],
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
-              CustomText(
+              const CustomText(
                 label: "admission number",
               ),
               CustomTextField(
@@ -88,10 +88,10 @@ class Register extends StatelessWidget {
                 icon: Icons.person,
                 controller: userNameController,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
-              CustomText(
+              const CustomText(
                 label: "First Name",
               ),
               CustomTextField(
@@ -99,10 +99,10 @@ class Register extends StatelessWidget {
                 icon: Icons.person,
                 controller: fNameController,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
-              CustomText(
+              const CustomText(
                 label: "Middle Name",
               ),
               CustomTextField(
@@ -110,10 +110,10 @@ class Register extends StatelessWidget {
                 icon: Icons.person,
                 controller: mNameController,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
-              CustomText(
+              const CustomText(
                 label: "Last Name",
               ),
               CustomTextField(
@@ -121,10 +121,10 @@ class Register extends StatelessWidget {
                 icon: Icons.person,
                 controller: lNameController,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
-              CustomText(
+              const CustomText(
                 label: "email Address",
               ),
               CustomTextField(
@@ -132,10 +132,10 @@ class Register extends StatelessWidget {
                 icon: Icons.person,
                 controller: emailController,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
-              CustomText(
+              const CustomText(
                 label: "password",
               ),
               CustomTextField(
@@ -158,7 +158,7 @@ class Register extends StatelessWidget {
               //   isPassword: true,
               //   controller: passwordController,
               // ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               Row(
@@ -173,7 +173,7 @@ class Register extends StatelessWidget {
                     },
                   ),
 
-                  Spacer(),
+                  const Spacer(),
 
                   CustomButton(
                     label: "Register",
@@ -189,14 +189,14 @@ class Register extends StatelessWidget {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text(
+                              title: const Text(
                                 "Error",
                                 style: TextStyle(
                                   color: Colors
                                       .red, // Set the color of the title to red
                                 ),
                               ),
-                              content: Text(
+                              content: const Text(
                                 "Please fill in all fields. MIDDLE NAME IS THE ONLY FIELD THAT CAN BE LEFT BLANK",
                                 style: TextStyle(
                                   color: Colors
@@ -209,7 +209,7 @@ class Register extends StatelessWidget {
                                     Navigator.of(context)
                                         .pushNamed("/Registration");
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     "OK",
                                     style: TextStyle(
                                       color: Colors
@@ -229,7 +229,7 @@ class Register extends StatelessWidget {
                 ],
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
             ]),
@@ -257,7 +257,11 @@ class Register extends StatelessWidget {
       var serverResponse = json.decode(response.body);
       int signedUp = serverResponse['success'];
       if (signedUp == 1) {
-        Get.offAndToNamed("/Login");
+        // var userData = serverResponse['userdata'];
+        // var adm =  userData[0]['adm_no'];
+        // loginController.updateAdmission(adm);
+        // print(adm);
+        Get.offAndToNamed("/Home");
       } else {
         print("Error");
         Get.offAndToNamed("/Registration");

@@ -33,7 +33,7 @@ class CustomDropdown extends StatelessWidget {
 
         //   ),
         // ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         DropdownButtonFormField<String>(
           value: selectedValue,
           hint: Text(hint),
@@ -46,7 +46,7 @@ class CustomDropdown extends StatelessWidget {
                 },
           decoration: InputDecoration(
             prefixIcon: Icon(icon),
-            border: OutlineInputBorder(),
+            border: const OutlineInputBorder(),
           ),
           items: dropdownItems.map((String item) {
             return DropdownMenuItem<String>(

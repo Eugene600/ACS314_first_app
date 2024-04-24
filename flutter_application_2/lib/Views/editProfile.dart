@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/Views/busCard.dart';
 import 'package:flutter_application_2/Views/customButton.dart';
 import 'package:flutter_application_2/Views/customTextField.dart';
 import 'package:flutter_application_2/Views/customtext.dart';
 import 'package:flutter_application_2/Views/login.dart';
 import 'package:flutter_application_2/configs/constants.dart';
-import 'package:get/get.dart';
 
 //
 class EditProfile extends StatefulWidget {
@@ -20,17 +18,17 @@ class _EditProfileState extends State<EditProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.only(left: 16, top: 25, right: 16),
+        padding: const EdgeInsets.only(left: 16, top: 25, right: 16),
         child: ListView(
           children: [
-            Text(
+            const Text(
               "Edit Profile",
               style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.w600,
                   color: primaryColor),
             ),
-            SizedBox(
+            const SizedBox(
               height: 14,
             ),
             Center(
@@ -48,10 +46,10 @@ class _EditProfileState extends State<EditProfile> {
                             spreadRadius: 2,
                             blurRadius: 10,
                             color: Colors.black.withOpacity(0.1),
-                            offset: Offset(0, 10))
+                            offset: const Offset(0, 10))
                       ],
                       shape: BoxShape.circle,
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           fit: BoxFit.cover,
                           image: NetworkImage(
                               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbexRkIyn-NLb2s_I4gC0-Z9Y8_Z38U7O4nA&usqp=CAU")),
@@ -70,7 +68,7 @@ class _EditProfileState extends State<EditProfile> {
                             color: Theme.of(context).scaffoldBackgroundColor,
                           ),
                           color: primaryColor),
-                      child: Icon(
+                      child: const Icon(
                         Icons.edit,
                         color: appWhiteColor,
                       ),
@@ -79,7 +77,7 @@ class _EditProfileState extends State<EditProfile> {
                 ],
               ),
             ),
-            CustomText(
+            const CustomText(
               label: "FullName",
             ),
             CustomTextField(
@@ -87,10 +85,10 @@ class _EditProfileState extends State<EditProfile> {
               icon: Icons.person,
               controller: userNameController,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            CustomText(
+            const CustomText(
               label: "Email",
             ),
             CustomTextField(
@@ -98,7 +96,7 @@ class _EditProfileState extends State<EditProfile> {
               icon: Icons.person,
               controller: userNameController,
             ),
-            CustomText(
+            const CustomText(
               label: "Bus pick-up location ",
             ),
             CustomTextField(
@@ -106,7 +104,7 @@ class _EditProfileState extends State<EditProfile> {
               icon: Icons.person,
               controller: userNameController,
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             CustomButton(

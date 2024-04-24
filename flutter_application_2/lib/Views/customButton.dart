@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/Views/customtext.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class CustomButton extends StatelessWidget {
   final String label;
@@ -20,7 +18,7 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton.icon(
       onPressed: action,
       style: ElevatedButton.styleFrom(
-          fixedSize: Size(250, 50), backgroundColor: Colors.lightBlueAccent),
+          fixedSize: const Size(250, 50), backgroundColor: Colors.lightBlueAccent),
       // icon: Visibility(
       //   visible: icon != null,
       //   child: Icon(icon),

@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/Controller/calculator_controller.dart';
-import 'package:flutter_application_2/Views/customButton.dart';
 import 'package:flutter_application_2/Views/customTextField.dart';
 import 'package:flutter_application_2/Views/customtext.dart';
 import 'package:flutter_application_2/configs/constants.dart';
@@ -13,6 +12,8 @@ class Calculator extends StatelessWidget {
   TextEditingController aController = TextEditingController();
   TextEditingController bController = TextEditingController();
   CalculatorController calculatorController = Get.put(CalculatorController());
+
+  Calculator({super.key});
   // double sum = 0.0;
 
   @override
@@ -20,23 +21,23 @@ class Calculator extends StatelessWidget {
   Widget build(BuildContext context) {
     // return Scaffold(
     return Padding(
-      padding: EdgeInsets.all(40.0),
+      padding: const EdgeInsets.all(40.0),
       child: Column(
         children: [
-          CustomText(label: "Enter a"),
+          const CustomText(label: "Enter a"),
           CustomTextField(
             controller: aController,
             hint: "Value for a",
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          CustomText(label: "Enter b"),
+          const CustomText(label: "Enter b"),
           CustomTextField(
             controller: bController,
             hint: "Value for b",
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           // CustomButton(label: "Calculate"),
@@ -50,10 +51,10 @@ class Calculator extends StatelessWidget {
               calculatorController.updateValue(a, b);
             },
             height: 50,
-            child: Text("Calculate"),
             color: primaryColor,
+            child: const Text("Calculate"),
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Obx(() => CustomText(

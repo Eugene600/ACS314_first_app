@@ -1,22 +1,19 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/Controller/homePage_controller.dart';
 import 'package:flutter_application_2/Views/booking.dart';
 import 'package:flutter_application_2/Views/editProfile.dart';
-import 'package:flutter_application_2/Views/calculator.dart';
 import 'package:flutter_application_2/Views/homePage.dart';
 import 'package:flutter_application_2/Views/settings.dart';
-import 'package:flutter_application_2/Views/students.dart';
 import 'package:flutter_application_2/configs/constants.dart';
 import 'package:get/get.dart';
 
 //Class File
 var screens = [
-  HomePage(),
-  Booking(),
-  EditProfile(),
-  Settings(),
+  const HomePage(),
+  const Booking(),
+  const EditProfile(),
+  const Settings(),
 ];
 
 HomePage_controller homePage_controller = Get.put(HomePage_controller());
@@ -53,7 +50,7 @@ class Home extends StatelessWidget {
         //     Get.offAndToNamed("/Home");
         //   },
         // ),
-        title: Text(
+        title: const Text(
           "Daystar University",
         ),
         // title: Column(
@@ -73,7 +70,7 @@ class Home extends StatelessWidget {
         foregroundColor: appWhiteColor,
         centerTitle: true,
         toolbarHeight: 150,
-        actions: [
+        actions: const [
           Icon(Icons.refresh),
         ],
       ),
@@ -81,7 +78,7 @@ class Home extends StatelessWidget {
             child: screens[homePage_controller.selectedPage.value],
           )),
       bottomNavigationBar: CurvedNavigationBar(
-        items: [
+        items: const [
           Icon(
             Icons.home,
             color: appWhiteColor,

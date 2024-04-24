@@ -7,9 +7,6 @@ import 'package:flutter_application_2/Views/customDropdown.dart';
 import 'package:flutter_application_2/Views/customTextField.dart';
 import 'package:flutter_application_2/Views/customtext.dart';
 import 'package:flutter_application_2/Views/home.dart';
-import 'package:flutter_application_2/Views/register.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:http/http.dart' as http;
 import 'flutterCarousel.dart'; // Import your FlutterCarousel widget
 import 'package:intl/intl.dart';
@@ -49,8 +46,8 @@ class Booking extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 'The following are times when buses are available:',
                 style: TextStyle(
@@ -61,7 +58,7 @@ class Booking extends StatelessWidget {
               ),
             ),
             CarouselSlider(
-              items: [
+              items: const [
                 // Your carousel items here
                 FlutterCarousel(
                   title: '5:00 AM',
@@ -134,16 +131,16 @@ class Booking extends StatelessWidget {
                 enlargeCenterPage: true,
                 enableInfiniteScroll: true,
                 autoPlay: true,
-                autoPlayInterval: Duration(seconds: 3),
-                autoPlayAnimationDuration: Duration(milliseconds: 800),
+                autoPlayInterval: const Duration(seconds: 3),
+                autoPlayAnimationDuration: const Duration(milliseconds: 800),
                 autoPlayCurve: Curves.fastOutSlowIn,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 'Please fill in the details below if you wish to use the Bus:',
                 style: TextStyle(
@@ -169,14 +166,14 @@ class Booking extends StatelessWidget {
             // SizedBox(
             //   height: 40,
             // ),
-            CustomText(
+            const CustomText(
               label: "Picking Point",
             ),
             CustomDropdown(
               label: "Picking Point",
               hint: "Select where you will be boarding the bus",
               icon: Icons.location_city,
-              dropdownItems: [
+              dropdownItems: const [
                 'Athi River',
                 'Valley Road',
                 'Shell(Opposite Nyayo)',
@@ -197,17 +194,17 @@ class Booking extends StatelessWidget {
                 pickingPoint.text = value ?? '';
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
-            CustomText(
+            const CustomText(
               label: "Dropping Point",
             ),
             CustomDropdown(
               label: "Dropping Point",
               hint: "Select where you will be alighting the bus",
               icon: Icons.location_city,
-              dropdownItems: [
+              dropdownItems: const [
                 'Athi River',
                 'Valley Road',
                 'Shell(Opposite Nyayo)',
@@ -224,7 +221,7 @@ class Booking extends StatelessWidget {
                 if (value == pickingPoint.text) {
                   pickingPoint.text = '';
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
+                    const SnackBar(
                       content: Text(
                           'Cannot select the same location as Picking and Dropping Point'),
                     ),
@@ -242,7 +239,7 @@ class Booking extends StatelessWidget {
                 } else {
                   droppingPoint.text = '';
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
+                    const SnackBar(
                       content: Text(
                           'The Bus from Athi River to Valley Road only drops off students along Mombasa Road, it does not pick'),
                     ),
@@ -250,10 +247,10 @@ class Booking extends StatelessWidget {
                 }
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
-            CustomText(
+            const CustomText(
               label: "Date",
             ),
             CustomTextField(
@@ -272,17 +269,17 @@ class Booking extends StatelessWidget {
                 }
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
-            CustomText(
+            const CustomText(
               label: "Time",
             ),
             CustomDropdown(
               label: "Time",
               hint: "Select where you will be alighting the bus",
               icon: Icons.location_city,
-              dropdownItems: [
+              dropdownItems: const [
                 '5:00AM Bus(Only from Athi River)',
                 '6:30AM Bus(Only from Valley Road)',
                 '9:00AM Bus(Only on Saturdays from Athi River)',
@@ -298,7 +295,7 @@ class Booking extends StatelessWidget {
                 time.text = value ?? '';
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Row(
@@ -318,14 +315,14 @@ class Booking extends StatelessWidget {
                         context: context,
                         builder: (BuildContext context) {
                           return AlertDialog(
-                            title: Text(
+                            title: const Text(
                               "Error!!!!",
                               style: TextStyle(
                                 color: Colors
                                     .red, // Set the color of the title to red
                               ),
                             ),
-                            content: Text(
+                            content: const Text(
                               "Please fill in all fields.",
                               style: TextStyle(
                                 color: Colors
@@ -339,7 +336,7 @@ class Booking extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            Home()), // Replace NextPage with the class name of the page you want to navigate to
+                                            const Home()), // Replace NextPage with the class name of the page you want to navigate to
                                   ).then((_) {
                                     // This code will run when the Booking screen is popped
                                     // You can add any functionality here that you want to execute after returning from the Booking screen
@@ -347,11 +344,11 @@ class Booking extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                              Booking()), // Replace NextPage with the class name of the page you want to navigate to
+                                              const Booking()), // Replace NextPage with the class name of the page you want to navigate to
                                     );
                                   });
                                 },
-                                child: Text(
+                                child: const Text(
                                   "OK",
                                   style: TextStyle(
                                     color: Colors
@@ -402,14 +399,14 @@ Future<void> remoteBooking(BuildContext context) async {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text(
+              title: const Text(
                 "Success!!!",
                 style: TextStyle(
                   color:
                       Colors.greenAccent, // Set the color of the title to red
                 ),
               ),
-              content: Text(
+              content: const Text(
                 "You have successfully booked a bus.",
                 style: TextStyle(
                   color: Colors.blueAccent, // Set the color of the title to red
@@ -422,7 +419,7 @@ Future<void> remoteBooking(BuildContext context) async {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              Home()), // Replace NextPage with the class name of the page you want to navigate to
+                              const Home()), // Replace NextPage with the class name of the page you want to navigate to
                     ).then((_) {
                       // This code will run when the Booking screen is popped
                       // You can add any functionality here that you want to execute after returning from the Booking screen
@@ -430,11 +427,11 @@ Future<void> remoteBooking(BuildContext context) async {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                Booking()), // Replace NextPage with the class name of the page you want to navigate to
+                                const Booking()), // Replace NextPage with the class name of the page you want to navigate to
                       );
                     });
                   },
-                  child: Text(
+                  child: const Text(
                     "OK",
                     style: TextStyle(
                       color: Colors
@@ -451,13 +448,13 @@ Future<void> remoteBooking(BuildContext context) async {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
-              title: Text(
+              title: const Text(
                 "Error",
                 style: TextStyle(
                   color: Colors.red, // Set the color of the title to red
                 ),
               ),
-              content: Text(
+              content: const Text(
                 "You cannot pick the same location twice",
                 style: TextStyle(
                   color: Colors.blueAccent, // Set the color of the title to red
@@ -470,7 +467,7 @@ Future<void> remoteBooking(BuildContext context) async {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              Home()), // Replace NextPage with the class name of the page you want to navigate to
+                              const Home()), // Replace NextPage with the class name of the page you want to navigate to
                     ).then((_) {
                       // This code will run when the Booking screen is popped
                       // You can add any functionality here that you want to execute after returning from the Booking screen
@@ -478,11 +475,11 @@ Future<void> remoteBooking(BuildContext context) async {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                Booking()), // Replace NextPage with the class name of the page you want to navigate to
+                                const Booking()), // Replace NextPage with the class name of the page you want to navigate to
                       );
                     });
                   },
-                  child: Text(
+                  child: const Text(
                     "OK",
                     style: TextStyle(
                       color: Colors
@@ -501,13 +498,13 @@ Future<void> remoteBooking(BuildContext context) async {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text(
+            title: const Text(
               "Error",
               style: TextStyle(
                 color: Colors.red, // Set the color of the title to red
               ),
             ),
-            content: Text(
+            content: const Text(
               "Booking failed. Please try again later.",
               style: TextStyle(
                 color: Colors.blueAccent, // Set the color of the title to red
@@ -520,7 +517,7 @@ Future<void> remoteBooking(BuildContext context) async {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            Home()), // Replace NextPage with the class name of the page you want to navigate to
+                            const Home()), // Replace NextPage with the class name of the page you want to navigate to
                   ).then((_) {
                     // This code will run when the Booking screen is popped
                     // You can add any functionality here that you want to execute after returning from the Booking screen
@@ -528,11 +525,11 @@ Future<void> remoteBooking(BuildContext context) async {
                       context,
                       MaterialPageRoute(
                           builder: (context) =>
-                              Booking()), // Replace NextPage with the class name of the page you want to navigate to
+                              const Booking()), // Replace NextPage with the class name of the page you want to navigate to
                     );
                   });
                 },
-                child: Text(
+                child: const Text(
                   "OK",
                   style: TextStyle(
                     color:

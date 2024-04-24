@@ -22,10 +22,10 @@ class Settings extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: ListView(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
-              Row(
+              const Row(
                 children: [
                   Icon(
                     Icons.person,
@@ -40,22 +40,20 @@ class Settings extends StatelessWidget {
                   )
                 ],
               ),
-              Divider(
+              const Divider(
                 height: 20,
                 thickness: 1,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               buildAccountOption(context, "Change Password"),
               buildAccountOption(context, "Delete Account"),
-              buildAccountOption(context, "Social"),
-              buildAccountOption(context, "Language"),
-              buildAccountOption(context, "Privacy and Security"),
-              SizedBox(
+              buildAccountOption(context, "Log Out"),
+              const SizedBox(
                 height: 40,
               ),
-              Row(
+              const Row(
                 children: [
                   // Icon(
                   //   Icons.volume_up_outlined,
@@ -117,17 +115,34 @@ Padding buildNotificationOption(
 
 GestureDetector buildAccountOption(BuildContext context, String title) {
   return GestureDetector(
-    onTap: () {},
+    onTap: () {
+      switch (title) {
+        case "Change Password":
+          // Navigate to change password page
+          Navigator.pushNamed(context, '/change_password');
+          break;
+        case "Delete Account":
+          // Navigate to delete account page
+          Navigator.pushNamed(context, '/delete_account');
+          break;
+        // Add cases for other options as needed
+        case "Log Out":
+          Navigator.pushNamed(context, '/log_out');
+          break;
+      }
+    },
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-              color: Colors.grey[600],
-            )),
-        Icon(
+        Text(
+          title,
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w500,
+            color: Colors.grey[600],
+          ),
+        ),
+        const Icon(
           Icons.arrow_forward_ios,
           color: Colors.grey,
         )
@@ -135,3 +150,4 @@ GestureDetector buildAccountOption(BuildContext context, String title) {
     ),
   );
 }
+

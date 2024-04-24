@@ -1,10 +1,5 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/Views/busCard.dart';
-import 'package:flutter_application_2/Views/home.dart';
-import 'package:flutter_application_2/Views/navigationDestinations.dart';
-import 'package:flutter_application_2/configs/constants.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 class HomePage extends StatelessWidget {
   // const HomePage({super.key});

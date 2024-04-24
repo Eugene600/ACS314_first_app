@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/Views/customtext.dart';
 
 class NavigationDestinations extends StatelessWidget {
   final String label;
