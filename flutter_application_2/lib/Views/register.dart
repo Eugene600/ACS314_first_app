@@ -179,51 +179,52 @@ class Register extends StatelessWidget {
                     label: "Register",
                     icon: Icons.app_registration_rounded,
                     action: () {
-                      if (userNameController.text.isEmpty ||
-                          fNameController.text.isEmpty ||
-                          lNameController.text.isEmpty ||
-                          emailController.text.isEmpty ||
-                          passwordController.text.isEmpty) {
-                        // Show error message if any field is empty
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text(
-                                "Error",
-                                style: TextStyle(
-                                  color: Colors
-                                      .red, // Set the color of the title to red
-                                ),
-                              ),
-                              content: const Text(
-                                "Please fill in all fields. MIDDLE NAME IS THE ONLY FIELD THAT CAN BE LEFT BLANK",
-                                style: TextStyle(
-                                  color: Colors
-                                      .blueAccent, // Set the color of the title to red
-                                ),
-                              ),
-                              actions: <Widget>[
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context)
-                                        .pushNamed("/Registration");
-                                  },
-                                  child: const Text(
-                                    "OK",
-                                    style: TextStyle(
-                                      color: Colors
-                                          .blueAccent, // Set the color of the title to red
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      } else {
-                        remoteSignUp();
-                      }
+                      remoteSignUp();
+                      // if (userNameController.text.isEmpty ||
+                      //     fNameController.text.isEmpty ||
+                      //     lNameController.text.isEmpty ||
+                      //     emailController.text.isEmpty ||
+                      //     passwordController.text.isEmpty) {
+                      //   // Show error message if any field is empty
+                      //   showDialog(
+                      //     context: context,
+                      //     builder: (BuildContext context) {
+                      //       return AlertDialog(
+                      //         title: const Text(
+                      //           "Error",
+                      //           style: TextStyle(
+                      //             color: Colors
+                      //                 .red, // Set the color of the title to red
+                      //           ),
+                      //         ),
+                      //         content: const Text(
+                      //           "Please fill in all fields. MIDDLE NAME IS THE ONLY FIELD THAT CAN BE LEFT BLANK",
+                      //           style: TextStyle(
+                      //             color: Colors
+                      //                 .blueAccent, // Set the color of the title to red
+                      //           ),
+                      //         ),
+                      //         actions: <Widget>[
+                      //           TextButton(
+                      //             onPressed: () {
+                      //               Navigator.of(context)
+                      //                   .pushNamed("/Registration");
+                      //             },
+                      //             child: const Text(
+                      //               "OK",
+                      //               style: TextStyle(
+                      //                 color: Colors
+                      //                     .blueAccent, // Set the color of the title to red
+                      //               ),
+                      //             ),
+                      //           ),
+                      //         ],
+                      //       );
+                      //     },
+                      //   );
+                      // } else {
+                      //   remoteSignUp();
+                      // }
                     },
                   ),
                 ],
@@ -243,9 +244,9 @@ class Register extends StatelessWidget {
     http.Response response;
     var body = {
       'adm_no': userNameController.text.trim(),
-      'first_name': fNameController.text.trim(),
-      'middle_name': mNameController.text.trim(),
-      'last_name': lNameController.text.trim(),
+      'first_Name': fNameController.text.trim(),
+      'middle_Name': mNameController.text.trim(),
+      'last_Name': lNameController.text.trim(),
       'email': emailController.text.trim(),
       'password': passwordController.text.trim(),
     };
@@ -261,10 +262,13 @@ class Register extends StatelessWidget {
         // var adm =  userData[0]['adm_no'];
         // loginController.updateAdmission(adm);
         // print(adm);
-        Get.offAndToNamed("/Home");
+        Get.offAndToNamed("/Login");
       } else {
-        print("Error");
-        Get.offAndToNamed("/Registration");
+        Get.snackbar("Login Failed", "Invalid username or password",
+                        snackPosition: SnackPosition.BOTTOM,
+                        backgroundColor: Colors.blueAccent,
+                        colorText: Colors.white
+                        );
       }
     }
   }

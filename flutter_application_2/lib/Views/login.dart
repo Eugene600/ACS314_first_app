@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/Controller/login_controller.dart';
 import 'package:flutter_application_2/Views/customButton.dart';
@@ -157,44 +158,8 @@ class Login extends StatelessWidget {
                     label: "Login",
                     icon: Icons.login,
                     action: () {
-                      if (userNameController.text.isEmpty ||
-                          passwordController.text.isEmpty) {
-                        // Show error message if any field is empty
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text(
-                                "Error!!!",
-                                style: TextStyle(
-                                  color: Colors
-                                      .red, // Set the color of the title to red
-                                ),
-                              ),
-                              content: const Text(
-                                "Please fill in both ADMISSION NUMBER and PASSWORD.",
-                                style: TextStyle(
-                                  color: Colors
-                                      .blueAccent, // Set the color of the content to blue
-                                ),
-                              ),
-                              actions: <Widget>[
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pushNamed("/Login");
-                                  },
-                                  child: const Text(
-                                    "OK",
-                                    style: TextStyle(color: Colors.blueAccent),
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      } else {
-                        remoteLogin();
-                      }
+                      remoteLogin();
+                      
                     },
                   ),
                   // MaterialButton(
@@ -236,14 +201,17 @@ class Login extends StatelessWidget {
       var serverResponse = json.decode(response.body);
       int loginStatus = serverResponse['success'];
       if (loginStatus == 1) {
-        var userData = serverResponse['userdata'];
+        var userData = serverResponse['data'];
         var adm = userData[0]['adm_no'];
         loginController.updateAdmission(adm);
         print(adm);
         Get.offAndToNamed("/Home");
       } else {
-        print("Admission number or password is invalid");
-        Get.offAndToNamed("/Login");
+         Get.snackbar("Login Failed", "Invalid username or password",
+                        snackPosition: SnackPosition.BOTTOM,
+                        backgroundColor: Colors.blueAccent,
+                        colorText: Colors.white
+                        );
       }
     } else {
       print("Server Error ${response.statusCode}");
