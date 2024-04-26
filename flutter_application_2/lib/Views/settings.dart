@@ -1,5 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/Controller/login_controller.dart';
+import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/response/response.dart';
+import 'package:http/http.dart' as http;
+
+LoginController loginController = Get.put(LoginController());
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -122,12 +130,61 @@ GestureDetector buildAccountOption(BuildContext context, String title) {
           Navigator.pushNamed(context, '/change_password');
           break;
         case "Delete Account":
-          // Navigate to delete account page
-          Navigator.pushNamed(context, '/delete_account');
+          // Show alert dialog for confirmation
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("No Access"),
+                content: Text("This Feature cannot be implemented"),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(
+                      "Ok",
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  ),
+                  
+                ],
+              );
+            },
+          );
           break;
-        // Add cases for other options as needed
         case "Log Out":
-          Navigator.pushNamed(context, '/log_out');
+          // Show alert dialog for logout confirmation
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text("Confirmation"),
+                content: Text("Are you sure you want to log out?"),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(
+                      "Cancel",
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      // Navigate to login page
+                      Navigator.pushNamed(context, '/login');
+                    },
+                    child: Text(
+                      "Log Out",
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ),
+                ],
+              );
+            },
+          );
           break;
       }
     },
@@ -151,3 +208,32 @@ GestureDetector buildAccountOption(BuildContext context, String title) {
   );
 }
 
+
+Future<void> remoteDelete() async{
+  http.Response response;
+    response = await http.get(Uri.parse(
+        "https://eugenewachira.co.ke/studentAccount/delete.php"));
+  if (response.statusCode == 200) {
+    var serverResponse = json.decode(response.body);
+    int deleteStatus = serverResponse['success'];
+    var userData = serverResponse['data'];
+    var adm = userData[0]['adm_no'];
+    print(adm);
+    loginController.updateAdmission(adm);
+    if (deleteStatus == 1) {
+      
+      Get.snackbar("Account Deleted", "Your account has been successfully deleted",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.blueAccent,
+          colorText: Colors.white);
+      Get.offAllNamed("/login");
+    } else {
+      Get.snackbar("Deletion Failed", "Failed to delete account",
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red,
+          colorText: Colors.white);
+    }
+  } else {
+    print("Server Error ${response.statusCode}");
+  }
+}

@@ -1,12 +1,11 @@
 import 'package:flutter_application_2/Views/booking.dart';
 import 'package:flutter_application_2/Views/calculator.dart';
 import 'package:flutter_application_2/Views/changePasswordPage.dart';
-import 'package:flutter_application_2/Views/deleteAccountPage.dart';
 import 'package:flutter_application_2/Views/homePage.dart';
-import 'package:flutter_application_2/Views/logOut.dart';
 import 'package:flutter_application_2/Views/login.dart';
 import 'package:flutter_application_2/Views/home.dart';
 import 'package:flutter_application_2/Views/register.dart';
+import 'package:flutter_application_2/Views/settings.dart';
 import 'package:flutter_application_2/Views/students.dart';
 import 'package:get/get.dart';
 
@@ -18,10 +17,9 @@ class Routes {
     GetPage(name: "/Registration", page: () => const Register()),
     GetPage(name: "/HomePage", page: () => const HomePage()),
     GetPage(name: "/Home", page: () => const Home()),
-    GetPage(name: "/Students", page: () => const Students()),
+    // GetPage(name: "/Students", page: () => const Students()),
     GetPage(name: "/Booking", page: () => const Booking()),
     GetPage(name: "/change_password", page: () => ChangePasswordPage()),
-    GetPage(name: "/delete_account", page: () => DeleteAccountPage()),
-    GetPage(name: "/log_out", page: () => LogOut()),
+    GetPage(name: "/settings", page: () => Settings()),
   ];
 }

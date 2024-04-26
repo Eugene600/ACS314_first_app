@@ -29,8 +29,8 @@ class Login extends StatelessWidget {
 
     // Orientation orientation = mediaQueryData.orientation;
 
-    myPres.getValue("admission number").then((value) {
-      userNameController.text = value;
+    myPres.getValue("password").then((value) {
+      passwordController.text = value;
     });
     return Scaffold(
       body: SingleChildScrollView(
@@ -204,7 +204,7 @@ class Login extends StatelessWidget {
         var userData = serverResponse['data'];
         var adm = userData[0]['adm_no'];
         loginController.updateAdmission(adm);
-        print(adm);
+        // print(adm);
         Get.offAndToNamed("/Home");
       } else {
          Get.snackbar("Login Failed", "Invalid username or password",

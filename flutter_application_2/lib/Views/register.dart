@@ -258,7 +258,7 @@ class Register extends StatelessWidget {
       var serverResponse = json.decode(response.body);
       int signedUp = serverResponse['success'];
       if (signedUp == 1) {
-        // var userData = serverResponse['userdata'];
+        // var userData = serverResponse['data'];
         // var adm =  userData[0]['adm_no'];
         // loginController.updateAdmission(adm);
         // print(adm);

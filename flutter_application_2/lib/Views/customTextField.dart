@@ -23,7 +23,7 @@ class CustomTextField extends StatelessWidget {
     this.onTap,
     this.decoration,
   }) : super(key: key);
-
+  
   @override
   Widget build(BuildContext context) {
     return Obx(() {

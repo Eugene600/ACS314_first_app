@@ -12,7 +12,6 @@ import 'package:get/get.dart';
 var screens = [
   const HomePage(),
   const Booking(),
-  const EditProfile(),
   const Settings(),
 ];
 
@@ -85,10 +84,6 @@ class Home extends StatelessWidget {
           ),
           Icon(
             Icons.bus_alert,
-            color: appWhiteColor,
-          ),
-          Icon(
-            Icons.person,
             color: appWhiteColor,
           ),
           Icon(
